@@ -1,0 +1,65 @@
+﻿@model netcore.Models.ApplicationUser
+
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        @if (Model != null)
+        {
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="@Model.profilePictureUrl" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>@Model.Email</p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
+
+        }
+
+
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+
+            @{ 
+                <li class="header">MODULE</li>
+                Type pages = typeof(netcore.MVC.Pages);
+                Type tRole = Model.GetType();
+                foreach (Type item in pages.GetNestedTypes())
+                {
+                    string Url = item.GetField("Url").GetValue(item).ToString();
+                    string Controller = item.GetField("Controller").GetValue(item).ToString();
+                    string Name = item.GetField("Name").GetValue(item).ToString();
+                    string Role = item.GetField("Role").GetValue(item).ToString();
+                    if (!Controller.Contains("Line"))
+                    {
+                        System.Reflection.PropertyInfo pi = tRole.GetProperty(Role + "Role");
+                        if (pi == null) { continue; }
+                        bool vlue = (bool)pi.GetValue(Model, null);
+                        if (vlue)
+                        {
+                            <li class="@Html.IsSelected(controller: Controller)">
+                                <a href="@Url">
+                                    <i class="fa fa-circle-o"></i> <span>@Name</span>
+                                </a>
+                            </li>
+                        }
+
+                    }
+
+                }
+            }
+
+
+
+            <li class="header">ADMINLTE</li>
+            <li class="@Html.IsSelected(controller: "Adminlte", action: "Dashboardv1")">
+                <a href="@lte.MVC.Pages.Dashbaordv1.Url" target="_blank">
+                    <i class="fa fa-circle-o"></i> <span>Demo</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

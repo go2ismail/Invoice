@@ -1,0 +1,72 @@
+﻿@model netcore.Models.Invoice.Item
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-9">
+        <!-- Default box -->
+        <div class="box box-primary">
+            <div class="box-body">
+                <div>
+                      <dl class="dl-horizontal">
+                          <dt>
+                              @Html.DisplayNameFor(model => model.itemName)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.itemName)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.itemDescription)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.itemDescription)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.price)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.price)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.createdAt)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.createdAt)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.currency)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.currency.currencyCode)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.tax)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.tax.taxLabel)
+                          </dd>
+                      </dl>                                   
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <div class="form-group">
+                    <a asp-action="Edit" asp-route-id="@Model.itemId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Index" class="btn btn-default">Back to List</a>
+                </div>
+            </div>
+            <!-- /.box-footer-->
+        </div>
+        <!-- /.box -->
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+
+
+

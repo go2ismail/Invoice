@@ -1,0 +1,213 @@
+﻿<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="~/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p>Alexander Pierce</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+        <!-- search form -->
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">MAIN NAVIGATION</li>
+            <li class="@Html.IsSelected(actions: "Dashboardv1,Dashboardv2") treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="@Html.IsSelected(controller: "Adminlte", action: "Dashboardv1")"><a href="@lte.MVC.Pages.Dashbaordv1.Url"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+                    <li class="@Html.IsSelected(controller: "Adminlte", action: "Dashboardv2")"><a href="@lte.MVC.Pages.Dashbaordv2.Url"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                </ul>
+            </li>
+            <li class="@Html.IsSelected(actions: "Top,Boxed,Fixed,Collapsed") treeview">
+                <a href="#">
+                    <i class="fa fa-files-o"></i>
+                    <span>Layout Options</span>
+                    <span class="pull-right-container">
+                        <span class="label label-primary pull-right">4</span>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="@Html.IsSelected(action: "Top")"><a href="@lte.MVC.Pages.LayoutTop.Url"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
+                    <li class="@Html.IsSelected(action: "Boxed")"><a href="@lte.MVC.Pages.LayoutBoxed.Url"><i class="fa fa-circle-o"></i> Boxed</a></li>
+                    <li class="@Html.IsSelected(action: "Fixed")"><a href="@lte.MVC.Pages.LayoutFixed.Url"><i class="fa fa-circle-o"></i> Fixed</a></li>
+                    <li class="@Html.IsSelected(action: "Collapsed")"><a href="@lte.MVC.Pages.LayoutCollapsed.Url"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+                </ul>
+            </li>
+            <li class="@Html.IsSelected(actions: "Widget")">
+                <a href="@lte.MVC.Pages.WidgetIndex.Url">
+                    <i class="fa fa-th"></i> <span>Widgets</span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-green">new</small>
+                    </span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(actions: "ChartJS,Morris,Flot,Inline") treeview">
+                <a href="#">
+                    <i class="fa fa-pie-chart"></i>
+                    <span>Charts</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="@Html.IsSelected(controller: "Adminlte", action: "ChartJS")"><a href="@lte.MVC.Pages.ChartChartJS.Url"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+                    <li class="@Html.IsSelected(controller: "Adminlte", action: "Morris")"><a href="@lte.MVC.Pages.ChartMorris.Url"><i class="fa fa-circle-o"></i> Morris</a></li>
+                    <li class="@Html.IsSelected(controller: "Adminlte", action: "Flot")"><a href="@lte.MVC.Pages.ChartFlot.Url"><i class="fa fa-circle-o"></i> Flot</a></li>
+                    <li class="@Html.IsSelected(controller: "Adminlte", action: "Inline")"><a href="@lte.MVC.Pages.ChartInline.Url"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+                </ul>
+            </li>
+            <li class="@Html.IsSelected(actions: "General,Icon,Button,Slider,Timeline,Modal") treeview">
+                <a href="#">
+                    <i class="fa fa-laptop"></i>
+                    <span>UI Elements</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="@Html.IsSelected(action: "General")"><a href="@lte.MVC.Pages.UIElementGeneral.Url"><i class="fa fa-circle-o"></i> General</a></li>
+                    <li class="@Html.IsSelected(action: "Icon")"><a href="@lte.MVC.Pages.UIElementIcon.Url"><i class="fa fa-circle-o"></i> Icons</a></li>
+                    <li class="@Html.IsSelected(action: "Button")"><a href="@lte.MVC.Pages.UIElementButton.Url"><i class="fa fa-circle-o"></i> Buttons</a></li>
+                    <li class="@Html.IsSelected(action: "Slider")"><a href="@lte.MVC.Pages.UIElementSlider.Url"><i class="fa fa-circle-o"></i> Sliders</a></li>
+                    <li class="@Html.IsSelected(action: "Timeline")"><a href="@lte.MVC.Pages.UIElementTimeline.Url"><i class="fa fa-circle-o"></i> Timeline</a></li>
+                    <li class="@Html.IsSelected(action: "Modal")"><a href="@lte.MVC.Pages.UIElementModal.Url"><i class="fa fa-circle-o"></i> Modals</a></li>
+                </ul>
+            </li>
+            <li class="@Html.IsSelected(actions: "Form,Advanced,Editor")  treeview">
+                <a href="#">
+                    <i class="fa fa-edit"></i> <span>Forms</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="@Html.IsSelected(action: "Form")"><a href="@lte.MVC.Pages.FormGeneral.Url"><i class="fa fa-circle-o"></i> General Elements</a></li>
+                    <li class="@Html.IsSelected(action: "Advanced")"><a href="@lte.MVC.Pages.FormAdvanced.Url"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
+                    <li class="@Html.IsSelected(action: "Editor")"><a href="@lte.MVC.Pages.FormEditor.Url"><i class="fa fa-circle-o"></i> Editors</a></li>
+                </ul>
+            </li>
+            <li class="@Html.IsSelected(actions: "Simple,Data") treeview">
+                <a href="#">
+                    <i class="fa fa-table"></i> <span>Tables</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="@Html.IsSelected(action: "Simple")"><a href="@lte.MVC.Pages.TableSimple.Url"><i class="fa fa-circle-o"></i> Simple tables</a></li>
+                    <li class="@Html.IsSelected(action: "Data")"><a href="@lte.MVC.Pages.TableData.Url"><i class="fa fa-circle-o"></i> Data tables</a></li>
+                </ul>
+            </li>
+            <li class="@Html.IsSelected(actions: "Calendar")">
+                <a href="@lte.MVC.Pages.CalendarIndex.Url">
+                    <i class="fa fa-calendar"></i> <span>Calendar</span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-red">3</small>
+                        <small class="label pull-right bg-blue">17</small>
+                    </span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(actions: "Index,Compose,Read") treeview">
+                <a href="#">
+                    <i class="fa fa-envelope"></i> <span>Mailbox</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="@Html.IsSelected(action: "Index")">
+                        <a href="@lte.MVC.Pages.MailboxIndex.Url">
+                            Inbox
+                            <span class="pull-right-container">
+                                <span class="label label-primary pull-right">13</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="@Html.IsSelected(action: "Compose")"><a href="@lte.MVC.Pages.MailboxCompose.Url">Compose</a></li>
+                    <li class="@Html.IsSelected(action: "Read")"><a href="@lte.MVC.Pages.MailboxRead.Url">Read</a></li>
+                </ul>
+            </li>
+            
+            <li class="@Html.IsSelected(actions: "Invoice,Profile,Login,Register,Lockscreen,Error404,Error500,BlankPage,PacePage") treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i> <span>Examples</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="@Html.IsSelected(action: "Invoice")"><a href="@lte.MVC.Pages.ExampleInvoice.Url"><i class="fa fa-circle-o"></i> Invoice</a></li>
+                    <li class="@Html.IsSelected(action: "Profile")"><a href="@lte.MVC.Pages.ExampleProfile.Url"><i class="fa fa-circle-o"></i> Profile</a></li>
+                    <li class="@Html.IsSelected(action: "Login")"><a href="@lte.MVC.Pages.ExampleLogin.Url"><i class="fa fa-circle-o"></i> Login</a></li>
+                    <li class="@Html.IsSelected(action: "Register")"><a href="@lte.MVC.Pages.ExampleRegister.Url"><i class="fa fa-circle-o"></i> Register</a></li>
+                    <li class="@Html.IsSelected(action: "Lockscreen")"><a href="@lte.MVC.Pages.ExampleLockscreen.Url"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
+                    <li class="@Html.IsSelected(action: "Error404")"><a href="@lte.MVC.Pages.ExampleError404.Url"><i class="fa fa-circle-o"></i> 404 Error</a></li>
+                    <li class="@Html.IsSelected(action: "Error500")"><a href="@lte.MVC.Pages.ExampleError500.Url"><i class="fa fa-circle-o"></i> 500 Error</a></li>
+                    <li class="@Html.IsSelected(action: "BlankPage")"><a href="@lte.MVC.Pages.ExampleBlankPage.Url"><i class="fa fa-circle-o"></i> Blank Page</a></li>
+                    <li class="@Html.IsSelected(action: "PacePage")"><a href="@lte.MVC.Pages.ExamplePacePage.Url"><i class="fa fa-circle-o"></i> Pace Page</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-share"></i> <span>Multilevel</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-circle-o"></i> Level One
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-circle-o"></i> Level Two
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+                </ul>
+            </li>
+            <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+            <li class="header">LABELS</li>
+            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

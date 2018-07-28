@@ -1,0 +1,35 @@
+﻿@{
+    Layout = null;
+}
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">Add / Edit Data</h4>
+</div>
+<form onsubmit="return SubmitAddEdit(this)">
+    <div class="box-body">
+        @RenderBody()
+    </div>
+
+    <div class="box-footer">
+        <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-save"></i> Submit</button>
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+    </div>
+</form>
+
+
+@Html.Partial("_AdminlteNetcoreBasicStyles")
+
+@RenderSection("Styles", required: false)
+
+@Html.Partial("_AdminlteNetcoreBasicScripts")
+
+@RenderSection("Scripts", required: false)
+
+
+
+
+
+
+

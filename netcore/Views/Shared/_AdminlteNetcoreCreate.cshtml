@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject netcore.Data.ApplicationDbContext Context
+@{
+
+    ApplicationUser appUser = await UserManager.GetUserAsync(User);
+    string controller = (string)ViewContext.RouteData.Values["controller"];
+
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>@ViewData["Title"]</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    @Html.Partial("_AdminlteNetcoreBasicStyles")
+
+    @RenderSection("Styles", required: false)
+
+</head>
+<body class="hold-transition skin-blue fixed sidebar-mini">
+    <div class="wrapper">
+        @Html.Partial("_AdminlteNetcoreMainHeader", appUser)
+        <!-- Left side column. contains the logo and sidebar -->
+        @Html.Partial("_AdminlteNetcoreMainSidebar", appUser)
+        <!-- Content Wrapper. Contains page content -->
+        <form asp-action="Create">
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Create @controller
+                    </h1>
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <!-- Default box -->
+                            <div class="box box-primary">
+
+                                <div class="box-body">
+                                    @RenderBody()
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <div class="form-group">
+                                        <input type="submit" value="Create" class="btn btn-primary" />
+                                        <a asp-action="Index" class="btn btn-default">Back to List</a>
+                                    </div>
+                                </div>
+                                <!-- /.box-footer-->
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                        <div class="col-md-3">
+
+                        </div>
+                    </div>
+                   
+                </section>
+                <!-- /.content -->
+            </div>
+        </form>
+        
+        <!-- /.content-wrapper -->
+        @Html.Partial("_AdminlteNetcoreFooter")
+
+    </div>
+    <!-- ./wrapper -->
+
+    @Html.Partial("_AdminlteNetcoreBasicScripts")
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

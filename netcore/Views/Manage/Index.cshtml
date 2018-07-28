@@ -1,0 +1,135 @@
+﻿@model IndexViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject netcore.Data.ApplicationDbContext Context
+
+@{
+    ViewData["Title"] = "Manage Profile";
+    Layout = "_AdminlteNetcore";
+    ApplicationUser appUser = await UserManager.GetUserAsync(User);
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            User Profile
+        </h1>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-3">
+                @if (appUser != null)
+                {
+
+                    <!-- Profile Image -->
+                    <div class="box box-primary">
+                        <div class="box-body box-profile">
+                            <img class="profile-user-img img-responsive img-circle" src="@appUser.profilePictureUrl" alt="User profile picture">
+
+                            <h3 class="profile-username text-center">@appUser.Email</h3>
+                            <p class="text-muted text-center">Member</p>
+                            <ul class="list-group list-group-unbordered">
+                                <li class="list-group-item">
+                                    <b>Followers</b> <a class="pull-right">1,322</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Following</b> <a class="pull-right">543</a>
+                                </li>
+                            </ul>
+                            <a href="@Url.Action("ChangePassword", "Manage")" class="btn btn-primary btn-block">
+                                <i class="fa fa-key">
+                                    <span>Change Password</span>
+                                </i>
+                            </a>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                }
+
+
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="active tab-pane" id="profile">
+                            <form method="post">
+                                <div class="box-body">
+                                    @Html.Partial("_StatusMessage", Model.StatusMessage)
+                                    <div class="row">
+                                        <div class="col-md-12">
+
+                                            <div asp-validation-summary="All" class="text-danger"></div>
+                                            <div class="form-group">
+                                                <label asp-for="Username"></label>
+                                                <input asp-for="Username" class="form-control" disabled />
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Email"></label>
+                                                @if (Model.IsEmailConfirmed)
+                                                {
+                                                    <div class="input-group">
+                                                        <input asp-for="Email" class="form-control" />
+                                                        <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <input asp-for="Email" class="form-control" />
+                                                    <button asp-action="SendVerificationEmail" class="btn btn-link">Send verification email</button>
+                                                }
+                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="PhoneNumber"></label>
+                                                <input asp-for="PhoneNumber" class="form-control" />
+                                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary btn-block">Save</button>
+                                </div>
+                                <!-- /.box-footer-->
+                            </form>
+                        </div>
+
+
+                    </div>
+                    <!-- /.tab-content -->
+                </div>
+                <!-- /.nav-tabs-custom -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+
+
+
+@section Styles{
+
+}
+
+
+@section Scripts{
+   
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+}
+

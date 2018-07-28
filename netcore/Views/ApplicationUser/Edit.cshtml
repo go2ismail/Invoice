@@ -1,0 +1,195 @@
+﻿@model netcore.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Application User Edit";
+    Layout = "_AdminlteNetcore";
+}
+
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <form asp-action="Edit">
+        <section class="content">
+            <!-- Default box -->
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Edit Roles</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                                title="Collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group hidden">
+                                <div class="checkbox">
+                                    <label>
+                                        <input asp-for="isSuperAdmin" /> @Html.DisplayNameFor(model => model.isSuperAdmin)
+                                    </label>
+                                </div>
+                            </div>
+                            @{ 
+                                Type t = Model.GetType();
+                                foreach (System.Reflection.PropertyInfo item in t.GetProperties())
+                                {
+                                    if (item.Name.Contains("Role") && !item.Name.Contains("Line"))
+                                    {
+                                        bool vlue = false;
+                                        vlue = (bool)item.GetValue(Model, null);
+
+                                         <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    @Html.CheckBox(item.Name, vlue) @item.Name
+
+                                                </label>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            }
+                            
+                          
+                            <input type="hidden" asp-for="Id" />
+                            <div class="form-group hidden">
+                                <label asp-for="UserName" class="control-label"></label>
+                                <input asp-for="UserName" class="form-control" />
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group hidden">
+                                <label asp-for="NormalizedUserName" class="control-label"></label>
+                                <input asp-for="NormalizedUserName" class="form-control" />
+                                <span asp-validation-for="NormalizedUserName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group hidden">
+                                <label asp-for="Email" class="control-label"></label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group hidden">
+                                <label asp-for="NormalizedEmail" class="control-label"></label>
+                                <input asp-for="NormalizedEmail" class="form-control" />
+                                <span asp-validation-for="NormalizedEmail" class="text-danger"></span>
+                            </div>
+                            <div class="form-group hidden">
+                                <div class="checkbox">
+                                    <label>
+                                        <input asp-for="EmailConfirmed" /> @Html.DisplayNameFor(model => model.EmailConfirmed)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group hidden">
+                                <label asp-for="PasswordHash" class="control-label"></label>
+                                <input asp-for="PasswordHash" class="form-control" />
+                                <span asp-validation-for="PasswordHash" class="text-danger"></span>
+                            </div>
+                            <div class="form-group hidden">
+                                <label asp-for="SecurityStamp" class="control-label"></label>
+                                <input asp-for="SecurityStamp" class="form-control" />
+                                <span asp-validation-for="SecurityStamp" class="text-danger"></span>
+                            </div>
+                            <div class="form-group hidden">
+                                <label asp-for="ConcurrencyStamp" class="control-label"></label>
+                                <input asp-for="ConcurrencyStamp" class="form-control" />
+                                <span asp-validation-for="ConcurrencyStamp" class="text-danger"></span>
+                            </div>
+                            <div class="form-group hidden">
+                                <label asp-for="PhoneNumber" class="control-label"></label>
+                                <input asp-for="PhoneNumber" class="form-control" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                            <div class="form-group hidden">
+                                <div class="checkbox">
+                                    <label>
+                                        <input asp-for="PhoneNumberConfirmed" /> @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group hidden">
+                                <div class="checkbox">
+                                    <label>
+                                        <input asp-for="TwoFactorEnabled" /> @Html.DisplayNameFor(model => model.TwoFactorEnabled)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group hidden">
+                                <label asp-for="LockoutEnd" class="control-label"></label>
+                                <input asp-for="LockoutEnd" class="form-control" />
+                                <span asp-validation-for="LockoutEnd" class="text-danger"></span>
+                            </div>
+                            <div class="form-group hidden">
+                                <div class="checkbox">
+                                    <label>
+                                        <input asp-for="LockoutEnabled" /> @Html.DisplayNameFor(model => model.LockoutEnabled)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group hidden">
+                                <label asp-for="AccessFailedCount" class="control-label"></label>
+                                <input asp-for="AccessFailedCount" class="form-control" />
+                                <span asp-validation-for="AccessFailedCount" class="text-danger"></span>
+                            </div>
+                            <div class="form-group hidden">
+                                <label asp-for="profilePictureUrl" class="control-label"></label>
+                                <input asp-for="profilePictureUrl" class="form-control" />
+                                <span asp-validation-for="profilePictureUrl" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <a asp-action="Index" class="btn btn-default">Back to List</a>
+                    </div>
+                </div>
+                <!-- /.box-footer-->
+            </div>
+            <!-- /.box -->
+        </section>
+    </form>
+    <!-- Main content -->
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+
+@section Styles{
+
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/adminlte/plugins/iCheck/all.css"/>
+
+}
+
+
+@section Scripts{
+   
+    <!-- iCheck -->
+    <script src="~/adminlte/plugins/iCheck/icheck.min.js"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' /* optional */
+            });
+        });
+    </script>
+}
+
+

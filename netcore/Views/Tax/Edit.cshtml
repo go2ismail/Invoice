@@ -1,0 +1,38 @@
+﻿@model netcore.Models.Invoice.Tax
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminlteNetcoreEdit.cshtml";
+    }
+
+
+<div class="row">
+    <div class="col-md-12">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="taxId" />
+                    <div class="form-group">
+                        <label asp-for="taxLabel" class="control-label"></label>
+                        <input asp-for="taxLabel" class="form-control" />
+                        <span asp-validation-for="taxLabel" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="taxRate" class="control-label"></label>
+                        <input asp-for="taxRate" class="form-control" />
+                        <span asp-validation-for="taxRate" class="text-danger"></span>
+                    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+            @section Scripts {
+                 @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
+
+
+

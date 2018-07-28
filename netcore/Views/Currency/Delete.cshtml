@@ -1,0 +1,33 @@
+﻿@model netcore.Models.Invoice.Currency
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+}
+
+
+
+<div>
+    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.currencyCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.currencyCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.currencyName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.currencyName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.createdAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.createdAt)
+        </dd>
+    </dl>
+    
+</div>

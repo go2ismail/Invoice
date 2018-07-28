@@ -1,0 +1,96 @@
+﻿@model netcore.Models.Invoice.MyCompany
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-9">
+        <!-- Default box -->
+        <div class="box box-primary">
+            <div class="box-body">
+                <div>
+                      <dl class="dl-horizontal">
+                          <dt>
+                              @Html.DisplayNameFor(model => model.companyName)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.companyName)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.contactName)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.contactName)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.address)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.address)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.phone)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.phone)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.fax)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.fax)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.email)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.email)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.website)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.website)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.taxRegisteredNumber)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.taxRegisteredNumber)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.additionalInformation)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.additionalInformation)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.createdAt)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.createdAt)
+                          </dd>
+                      </dl>                                   
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <div class="form-group">
+                    <a asp-action="Edit" asp-route-id="@Model.myCompanyId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Index" class="btn btn-default">Back to List</a>
+                </div>
+            </div>
+            <!-- /.box-footer-->
+        </div>
+        <!-- /.box -->
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+
+
+

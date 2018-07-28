@@ -1,0 +1,96 @@
+﻿@model netcore.Models.Invoice.CustomerInvoiceLine
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-9">
+        <!-- Default box -->
+        <div class="box box-primary">
+            <div class="box-body">
+                <div>
+                      <dl class="dl-horizontal">
+                          <dt>
+                              @Html.DisplayNameFor(model => model.description)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.description)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.quantity)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.quantity)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.price)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.price)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.taxId)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.taxId)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.taxAmount)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.taxAmount)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.amount)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.amount)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.totalAmount)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.totalAmount)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.createdAt)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.createdAt)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.customerInvoice)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.customerInvoice.customerInvoiceId)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.item)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.item.itemId)
+                          </dd>
+                      </dl>                                   
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <div class="form-group">
+                    <a asp-action="Edit" asp-route-id="@Model.customerInvoiceLineId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Index" class="btn btn-default">Back to List</a>
+                </div>
+            </div>
+            <!-- /.box-footer-->
+        </div>
+        <!-- /.box -->
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+
+
+

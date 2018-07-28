@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject netcore.Data.ApplicationDbContext Context
+@{
+
+    ApplicationUser appUser = await UserManager.GetUserAsync(User);
+    string controller = (string)ViewContext.RouteData.Values["controller"];
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>@ViewData["Title"]</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    @Html.Partial("_AdminlteNetcoreBasicStyles")
+
+    @RenderSection("Styles", required: false)
+
+</head>
+<body class="hold-transition skin-blue fixed sidebar-mini">
+    <div class="wrapper">
+        @Html.Partial("_AdminlteNetcoreMainHeader", appUser)
+        <!-- Left side column. contains the logo and sidebar -->
+        @Html.Partial("_AdminlteNetcoreMainSidebar", appUser)
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a asp-action="Create" class="btn btn-primary btn-block margin-bottom"><i class="fa fa-plus"></i> <span>New @controller</span></a>
+                        
+                        <div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Document Status</h3>
+                                <div class="box-tools">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body no-padding">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> Deleted</a></li>
+                                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Draft</a></li>
+                                    <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Save</a></li>
+                                </ul>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-9">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">@controller List</h3>
+                                <div class="box-tools pull-right">
+                                    <div class="has-feedback">
+                                        <input type="text" id="mainSearch" class="form-control input-sm" placeholder="Search...">
+                                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                    </div>
+                                </div>
+                                <!-- /.box-tools -->
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body no-padding">
+                                
+                                <div class="table-responsive mailbox-messages">
+                                    @RenderBody()
+                                    <!-- /.table -->
+                                </div>
+                                <!-- /.mail-box-messages -->
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer no-padding">
+                                
+                            </div>
+                        </div>
+                        <!-- /. box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        @Html.Partial("_AdminlteNetcoreFooter")
+
+    </div>
+    <!-- ./wrapper -->
+
+    @Html.Partial("_AdminlteNetcoreBasicScripts")
+
+    <script>
+        $(document).ready(function () { 
+            var mainTable;
+
+            mainTable = $('.table').DataTable({
+                "lengthChange": false,
+                "info": false,
+                "searching": true,
+                "dom": 'lrtip',
+                "scrollX": false
+            });
+
+            $('#mainSearch').keyup(function () {
+                mainTable.search($(this).val()).draw();
+            })
+
+        });
+        
+       
+    </script>
+
+    @RenderSection("Scripts", required: false)
+
+
+
+</body>
+</html>

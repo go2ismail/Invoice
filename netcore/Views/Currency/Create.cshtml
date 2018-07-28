@@ -1,0 +1,33 @@
+﻿@model netcore.Models.Invoice.Currency
+
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminlteNetcoreCreate.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="currencyId" />
+            <div class="form-group">
+                <label asp-for="currencyCode" class="control-label"></label>
+                <input asp-for="currencyCode" class="form-control" />
+                <span asp-validation-for="currencyCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="currencyName" class="control-label"></label>
+                <input asp-for="currencyName" class="form-control" />
+                <span asp-validation-for="currencyName" class="text-danger"></span>
+            </div>
+           
+        
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

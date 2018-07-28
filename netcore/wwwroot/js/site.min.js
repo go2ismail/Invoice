@@ -1,0 +1,1 @@
+function ShowMessage(n){toastr.success(n)}function ShowMessageError(n){toastr.error(n)}$(".select2").select2({dropdownAutoWidth:"true",width:"100%"});$(".datepicker").datepicker({autoclose:!0});

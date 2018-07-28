@@ -1,0 +1,75 @@
+﻿@model netcore.Models.Invoice.Vendor
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+}
+
+
+
+<div>
+    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.vendorName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.vendorName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.contactName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.contactName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.phone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.fax)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.fax)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.website)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.website)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.taxRegisteredNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.taxRegisteredNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.additionalInformation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.additionalInformation)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.createdAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.createdAt)
+        </dd>
+    </dl>
+    
+</div>

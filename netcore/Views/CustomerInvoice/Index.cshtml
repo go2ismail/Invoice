@@ -1,0 +1,48 @@
+﻿@model IEnumerable<netcore.Models.Invoice.CustomerInvoice>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminlteNetcoreIndex.cshtml";
+}
+
+
+<table class="table table-hover table-striped" style="width:100%">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.invoiceNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.invoiceDate)
+                </th>
+                
+                <th>
+                    @Html.DisplayNameFor(model => model.dueDate)
+                </th>
+                
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.invoiceNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.invoiceDate)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.dueDate)
+            </td>
+            
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.customerInvoiceId"><i class="fa fa-pencil"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.customerInvoiceId"><i class="fa fa-list"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.customerInvoiceId"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

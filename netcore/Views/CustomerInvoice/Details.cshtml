@@ -1,0 +1,280 @@
+﻿@model netcore.Models.Invoice.CustomerInvoice
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-9">
+        <!-- Default box -->
+        <div class="box box-primary">
+            <div class="box-body">
+                <div>
+                      <dl class="dl-horizontal">
+                          <dt>
+                              @Html.DisplayNameFor(model => model.invoiceNumber)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.invoiceNumber)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.invoiceDate)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.invoiceDate)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.invoiceReference)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.invoiceReference)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.dueDate)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.dueDate)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.noteToRecipient)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.noteToRecipient)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.termsAndCondition)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.termsAndCondition)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.subTotal)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.subTotal)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.taxAmount)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.taxAmount)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.discount)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.discount)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.shipping)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.shipping)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.grandTotal)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.grandTotal)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.isPaid)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.isPaid)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.createdAt)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.createdAt)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.customer)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.customer.customerName)
+                          </dd>
+                          <dt>
+                              @Html.DisplayNameFor(model => model.myCompany)
+                          </dt>
+                          <dd>
+                              @Html.DisplayFor(model => model.myCompany.companyName)
+                          </dd>
+                      </dl>                                   
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <div class="form-group">
+                    <a asp-action="Edit" asp-route-id="@Model.customerInvoiceId" class="btn btn-primary">Edit</a>
+                    <a asp-action="ShowInvoice" asp-route-id="@Model.customerInvoiceId" class="btn btn-primary pull-right"><i class="fa fa-print"></i> Print Customer Invoice</a>
+                    <a asp-action="Index" class="btn btn-default">Back to List</a>
+                </div>
+            </div>
+            <!-- /.box-footer-->
+        </div>
+        <!-- /.box -->
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-9">
+        <!-- Default box -->
+        <div class="box box-primary">
+
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table id="grid" name="grid" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="col-lg-4">Item</th>
+                                    <th class="col-lg-3">Qty</th>
+                                    <th class="col-lg-3">Price</th>
+                                    <th class="col-lg-2"></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="btn btn-success" style="margin-bottom:10px" onclick="ShowPopup('@Url.Action("Create","CustomerInvoiceLine", new { masterid = Model.customerInvoiceId })')"><i class="fa fa-plus"></i> Add New CustomerInvoiceLine</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-footer-->
+        </div>
+        <!-- /.box -->
+    </div>
+    <div class="col-md-3">
+
+    </div>
+</div>
+
+
+
+    <!--modal placeholder-->
+    <div class="modal modal-primary fade" id="modalDefault">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+@section Scripts{
+      <script>
+        var popup, dataTable;
+        var entity = 'CustomerInvoiceLine';
+        var apiurl = '/api/' + entity;
+
+        $(document).ready(function () {
+            dataTable = $('#grid').DataTable({
+                "ajax": {
+                    "url": apiurl + '?masterid=@Model.customerInvoiceId',
+                    "type": 'GET',
+                    "datatype": 'json'
+                },
+                "columns": [
+                    { "data": "item.itemName" },
+                    { "data": "quantity" },
+                    { "data": "price" },
+                    {
+                        "data": "customerInvoiceLineId",
+                        "render": function (data) {
+                            var btnEdit = "<a class='btn btn-default btn-xs' onclick=ShowPopup('/" + entity + "/Create/" + data + "')><i class='fa fa-pencil'></i></a>";
+                            var btnDelete = "<a class='btn btn-danger btn-xs' style='margin-left:2px' onclick=Delete('" + data + "')><i class='fa fa-trash'></i></a>";
+                            return btnEdit + btnDelete;
+                        }
+                    }
+                ],
+                "language": {
+                    "emptyTable": "no data found."
+                },
+                "lengthChange": false,
+                "info": false,
+                "searching": false,
+                "paging": false,
+            });
+        });
+
+        function ShowPopup(url) {
+            var modalId = 'modalDefault';
+            var modalPlaceholder = $('#' + modalId + ' .modal-dialog .modal-content');
+            $.get(url)
+                .done(function (response) {
+                    modalPlaceholder.html(response);
+                    popup = $('#' + modalId + '').modal({
+                        keyboard: false,
+                        backdrop: 'static'
+                    });
+                });
+        }
+
+
+        function SubmitAddEdit(form) {
+            $.validator.unobtrusive.parse(form);
+            if ($(form).valid()) {
+                var data = $(form).serializeJSON();
+                data = JSON.stringify(data);
+                $.ajax({
+                    type: 'POST',
+                    url: apiurl,
+                    data: data,
+                    contentType: 'application/json',
+                    success: function (data) {
+                        if (data.success) {
+                            popup.modal('hide');
+                            ShowMessage(data.message);
+                            dataTable.ajax.reload();
+                        } else {
+                            ShowMessageError(data.message);
+                        }
+                    }
+                });
+
+            }
+            return false;
+        }
+
+        function Delete(id) {
+            swal({
+                title: "Are you sure want to Delete?",
+                text: "You will not be able to restore the data!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#dd4b39",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: true
+            }, function () {
+                $.ajax({
+                    type: 'DELETE',
+                    url: apiurl + '/' + id,
+                    success: function (data) {
+                        if (data.success) {
+                            ShowMessage(data.message);
+                            dataTable.ajax.reload();
+                        } else {
+                            ShowMessageError(data.message);
+                        }
+                    }
+                });
+            });
+
+
+        }
+
+      </script>
+}
+

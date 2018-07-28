@@ -1,0 +1,38 @@
+﻿@model IEnumerable<netcore.Models.Invoice.Currency>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminlteNetcoreIndex.cshtml";
+}
+
+
+<table class="table table-hover table-striped" style="width:100%">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.currencyCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.currencyName)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.currencyCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.currencyName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.currencyId"><i class="fa fa-pencil"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.currencyId"><i class="fa fa-list"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.currencyId"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

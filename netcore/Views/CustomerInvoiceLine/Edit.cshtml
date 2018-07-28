@@ -1,0 +1,90 @@
+﻿@model netcore.Models.Invoice.CustomerInvoiceLine
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminlteNetcoreEdit.cshtml";
+    }
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="customerInvoiceLineId" />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="itemId" class="control-label"></label>
+                    <select asp-for="itemId" class="form-control select2" asp-items="ViewBag.itemId"></select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="description" class="control-label"></label>
+                    <input asp-for="description" class="form-control" />
+                    <span asp-validation-for="description" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="quantity" class="control-label"></label>
+                    <input asp-for="quantity" class="form-control" />
+                    <span asp-validation-for="quantity" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="price" class="control-label"></label>
+                    <input asp-for="price" class="form-control" />
+                    <span asp-validation-for="price" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="amount" class="control-label"></label>
+                    <input asp-for="amount" class="form-control" readonly/>
+                    <span asp-validation-for="amount" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="taxAmount" class="control-label"></label>
+                    <input asp-for="taxAmount" class="form-control" readonly/>
+                    <span asp-validation-for="taxAmount" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="totalAmount" class="control-label"></label>
+                    <input asp-for="totalAmount" class="form-control" readonly/>
+                    <span asp-validation-for="totalAmount" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group hidden">
+            <label asp-for="customerInvoiceId" class="control-label"></label>
+            <select asp-for="customerInvoiceId" class="form-control select2" asp-items="ViewBag.customerInvoiceId"></select>
+            <span asp-validation-for="customerInvoiceId" class="text-danger"></span>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+            @section Scripts {
+                 @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
+
+
+

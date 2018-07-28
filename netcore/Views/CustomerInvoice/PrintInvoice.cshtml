@@ -1,0 +1,136 @@
+﻿@model netcore.Models.Invoice.CustomerInvoice
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Print Invoice</title>
+</head>
+<body onload="window.print();">
+    <div class="wrapper">
+        <!-- Main content -->
+        <section class="invoice">
+            <!-- title row -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="page-header">
+                        <i class="fa fa-globe"></i> INVOICE
+                        <small class="pull-right">@Model.invoiceNumber</small>
+                    </h2>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- info row -->
+            <div class="row invoice-info">
+                <div class="col-sm-4 invoice-col">
+                    Bill To
+                    <address>
+                        <strong>@Model.customer.customerName</strong><br>
+                        @Model.customer.customerName<br>
+                        @Model.customer.address<br>
+                        @Model.customer.email<br>
+                        attn: @Model.customer.contactName
+                    </address>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                    From
+                    <address>
+                        <strong>@Model.myCompany.companyName</strong><br>
+                        @Model.myCompany.companyName<br>
+                        @Model.myCompany.address<br>
+                        @Model.myCompany.email<br>
+                        attn: @Model.myCompany.contactName
+
+                    </address>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                    <b>Invoice Number:</b> @Model.invoiceNumber<br>
+                    <b>Invoice Date:</b> @Model.invoiceDate.ToString("dd-MMM-yyyy")<br>
+                    <b>Invoice Due:</b> @Model.dueDate.ToString("dd-MMM-yyyy")<br>
+
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <!-- Table row -->
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Qty</th>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.customerInvoiceLine)
+                            {
+                                <tr>
+                                    <td>@item.quantity</td>
+                                    <td>@item.item.itemName</td>
+                                    <td>@item.price</td>
+                                    <td>$ @item.totalAmount</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <!-- accepted payments column -->
+                <div class="col-xs-6">
+                    <p class="lead">Note to recipients:</p>
+                    <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                        @Model.noteToRecipient
+                    </p>
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-6">
+                    <p class="lead">Amount Details</p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th style="width:50%">Subtotal:</th>
+                                <td>$ @Model.subTotal.ToString()</td>
+                            </tr>
+                            <tr>
+                                <th>Discount</th>
+                                <td>$ @Model.discount.ToString()</td>
+                            </tr>
+                            <tr>
+                                <th>Tax</th>
+                                <td>$ @Model.taxAmount.ToString()</td>
+                            </tr>
+                            <tr>
+                                <th>Shipment</th>
+                                <td>$ @Model.shipping.ToString()</td>
+                            </tr>
+                            <tr>
+                                <th>Total:</th>
+                                <td>$ @Model.grandTotal</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- ./wrapper -->
+    @Html.Partial("_AdminlteNetcoreBasicStyles")
+    @Html.Partial("_AdminlteNetcoreBasicScripts")
+</body>
+</html>
