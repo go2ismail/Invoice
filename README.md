@@ -42,3 +42,6 @@ Invoice Web Application Using Bootstrap AdminLTE Template
 ![invoice](netcore/wwwroot/images/inv5.png)
 ![invoice](netcore/wwwroot/images/inv6.png)
 ![invoice](netcore/wwwroot/images/inv7.png)
+
+# Supported by CodeRush.Co
+[CodeRush.CO] source code collections (https://coderush.co)
