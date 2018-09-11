@@ -15,8 +15,9 @@
     decimal totalcust = custopen + custpaid;
     decimal totalvend = vendopen + vendpaid;
 
-    int perccust = Convert.ToInt32(decimal.Divide(custpaid, totalcust) * 100);
-    int percvend = Convert.ToInt32(decimal.Divide(vendpaid, totalvend) * 100);
+    
+    int perccust = (totalcust != 0) ? Convert.ToInt32(decimal.Divide(custpaid, totalcust) * 100) : 0;
+    int percvend = (totalvend != 0) ? Convert.ToInt32(decimal.Divide(vendpaid, totalvend) * 100) : 0;
 
     List<string> labels = new List<string>();
 
